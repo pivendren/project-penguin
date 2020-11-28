@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -8,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Penguin.Areas.Identity;
 using Penguin.Data;
+using System.Threading.Tasks;
 
 namespace Penguin
 {
@@ -27,8 +29,25 @@ namespace Penguin
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddAuthentication().AddFacebook(fbOptions =>
+            {
+                fbOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+                fbOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+                fbOptions.Events = new OAuthEvents()
+                {
+                    OnRemoteFailure = loginFailureHandler =>
+                    {
+                        var authProperties = fbOptions.StateDataFormat.Unprotect(loginFailureHandler.Request.Query["state"]);
+                        loginFailureHandler.Response.Redirect("/Identity/Account/Login");
+                        loginFailureHandler.HandleResponse();
+                        return Task.FromResult(0);
+                    }
+                };
+            });
 
             //TODO Testing
             services.Configure<IdentityOptions>(options =>

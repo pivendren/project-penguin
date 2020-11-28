@@ -1,7 +1,10 @@
 ﻿@page "/fetchdata"
 
 @using Penguin.Data
+@using Microsoft.AspNetCore.Authorization
 @inject WeatherForecastService ForecastService
+
+@attribute [Authorize]
 
 <h1>Weather forecast</h1>
 
