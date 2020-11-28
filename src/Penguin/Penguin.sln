@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Penguin", "Penguin.csproj", "{1FDB110F-4F37-4C7A-8AA6-680A4E9D7826}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Penguin.Bot", "..\Penguin.Bot\Penguin.Bot.csproj", "{4524E8CB-527E-4522-82E7-04E18A5F0AFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1FDB110F-4F37-4C7A-8AA6-680A4E9D7826}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FDB110F-4F37-4C7A-8AA6-680A4E9D7826}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FDB110F-4F37-4C7A-8AA6-680A4E9D7826}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4524E8CB-527E-4522-82E7-04E18A5F0AFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4524E8CB-527E-4522-82E7-04E18A5F0AFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4524E8CB-527E-4522-82E7-04E18A5F0AFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4524E8CB-527E-4522-82E7-04E18A5F0AFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
