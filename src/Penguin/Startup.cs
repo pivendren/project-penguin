@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Penguin.Areas.Identity;
 using Penguin.Data;
+using Penguin.Database;
 using System.Threading.Tasks;
 
 namespace Penguin
