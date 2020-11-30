@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Penguin.Areas.Identity;
 using Penguin.Data;
 using Penguin.Database;
+using Penguin.Database.Models;
 using System.Threading.Tasks;
 
 namespace Penguin
@@ -31,7 +32,7 @@ namespace Penguin
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddDefaultIdentity<ApplicationUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddAuthentication().AddFacebook(fbOptions =>
@@ -62,7 +63,7 @@ namespace Penguin
             });
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
+            services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<ApplicationUser>>();
             services.AddSingleton<WeatherForecastService>();
         }
 

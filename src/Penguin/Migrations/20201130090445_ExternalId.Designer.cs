@@ -3,19 +3,21 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Penguin.Database;
 
 namespace Penguin.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201130090445_ExternalId")]
+    partial class ExternalId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.10")
+                .HasAnnotation("ProductVersion", "3.1.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -220,63 +222,6 @@ namespace Penguin.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("Penguin.Database.Models.PostTransaction", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("accountNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("cardId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("categoryCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("categoryKey")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("categoryName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("centsAmount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("countryAlpha3")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("countryCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("countryName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("currencyCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("dateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("merchantCity")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("merchantName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("reference")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("type")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PostTransactions");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
